@@ -1,30 +1,5 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-//create pool for pg DB
-const Pool = require("pg").Pool;
-
-
-const pool = new Pool({
-    user : "postgres",
-    password : "root",
-    host : "localhost",
-    port : "5432",
-    database : "ecomm"
-
-});
-
-const app = express();
-
-app.use(cors());
-app.use(express.urlencoded({extended : true}));
-app.use(express.json());
-
-const port = process.env.PORT || 1337;
-
-app.listen(port, () => console.log(`Server listening on port ${port}`));
-
 // query table regions
+exports.viewProduct = function(app,pool){
 app.get("/api/v1/product", (req,res)=>{
     pool.query(
         "select prod_id, prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id from product",
@@ -37,8 +12,10 @@ app.get("/api/v1/product", (req,res)=>{
         }
     )
 });
+}
 
 //input
+exports.insertProduct = function(app,pool){
 app.post("/api/v1/product",(req,res)=>{
     const {prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id} = req.body;
     pool.query(
@@ -53,8 +30,10 @@ app.post("/api/v1/product",(req,res)=>{
 
     )
 });
+}
 
 //update tanpa memakai param yg dimana semua attr dikikirm dri body
+exports.updateProduct = function(app,pool){
 app.put("/api/v1/product/",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
     const {prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id,prod_id} = req.body;
     pool.query(
@@ -69,8 +48,10 @@ app.put("/api/v1/product/",(req,res)=>{  //http://localhost:1337/api/v1/regions/
 
     )
 });
+}
 
 //delete
+exports.deleteProduct = function(app,pool){
 app.delete("/api/v1/product/:id",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
     const {id} = req.params;
     pool.query(
@@ -85,8 +66,10 @@ app.delete("/api/v1/product/:id",(req,res)=>{  //http://localhost:1337/api/v1/re
 
     )
 });
+}
 
 //query by filter
+exports.filterProduct = function(app,pool){
 app.get("/api/v1/product/:id",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
     const {id} = req.params;
     
@@ -102,3 +85,4 @@ app.get("/api/v1/product/:id",(req,res)=>{  //http://localhost:1337/api/v1/regio
 
     )
 });
+}

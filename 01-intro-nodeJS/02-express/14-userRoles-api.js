@@ -25,9 +25,9 @@ const port = process.env.PORT || 1337;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
 
 // query table regions
-app.get("/api/v1/product", (req,res)=>{
+app.get("/api/v1/user_roles", (req,res)=>{
     pool.query(
-        "select prod_id, prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id from product",
+        "select user_id, role_id from user_roles",
         [],
         (error, result)=>{
             if(error){
@@ -39,11 +39,11 @@ app.get("/api/v1/product", (req,res)=>{
 });
 
 //input
-app.post("/api/v1/product",(req,res)=>{
-    const {prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id} = req.body;
+app.post("/api/v1/user_roles",(req,res)=>{
+    const {user_id,role_id} = req.body;
     pool.query(
-        "insert into product (prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id) values ($1,$2,$3,$4,$5,$6,$7,$8)",
-        [prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id],
+        "insert into user_roles (user_id,role_id) values ($1,$2)",
+        [user_id,role_id],
         (error,results)=>{
             if(error){
                 throw error;
@@ -55,11 +55,11 @@ app.post("/api/v1/product",(req,res)=>{
 });
 
 //update tanpa memakai param yg dimana semua attr dikikirm dri body
-app.put("/api/v1/product/",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
-    const {prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id,prod_id} = req.body;
+app.put("/api/v1/user_roles/",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
+    const {user_id,role_id} = req.body;
     pool.query(
-        "update product set prod_title = $1,prod_description = $2,prod_stock = $3,prod_price = $4,prod_condition =$5,prod_manufacture=$6,prod_image=$7,prod_cate_id=$8 where prod_id=$9",
-        [prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id,prod_id],
+        "update user_roles set role_id = $1 where user_id=$2",
+        [role_id,user_id],
         (error,results)=>{
             if(error){
                 throw error;
@@ -71,10 +71,10 @@ app.put("/api/v1/product/",(req,res)=>{  //http://localhost:1337/api/v1/regions/
 });
 
 //delete
-app.delete("/api/v1/product/:id",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
+app.delete("/api/v1/user_roles/:id",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
     const {id} = req.params;
     pool.query(
-        "delete from product where prod_id=$1",
+        "delete from user_roles where user_id=$1",
         [id],
         (error,results)=>{
             if(error){
@@ -86,12 +86,11 @@ app.delete("/api/v1/product/:id",(req,res)=>{  //http://localhost:1337/api/v1/re
     )
 });
 
-//query by filter
-app.get("/api/v1/product/:id",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
+app.get("/api/v1/user_roles/:id",(req,res)=>{  //http://localhost:1337/api/v1/regions/5
     const {id} = req.params;
     
     pool.query(
-        "select prod_id, prod_title,prod_description,prod_stock,prod_price,prod_condition,prod_manufacture,prod_image,prod_cate_id from product where prod_id=$1",
+        "select user_id, role_id from user_roles where user_id=$1",
         [id],
         (error,results)=>{
             if(error){
