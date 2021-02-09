@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --exec babel-node index.js",
+    "reverse:db": "sequelize-auto -o ./modelquiz -d quiz -h localhost -u postgres -p 5432 -x agas -e postgres"
   },
   "author": "",
   "license": "ISC",
