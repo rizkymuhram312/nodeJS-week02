@@ -12,6 +12,9 @@ export const sequelize = new Sequelize(
 const models = {
     category : sequelize.import('./category.model'),
     address : sequelize.import('./address.model'),
+    province : sequelize.import('./province.model'),
+    city : sequelize.import('./city.model'),
+    productImage : sequelize.import('./productImage.model'),
     roles : sequelize.import('./roles.model')
 };
 
@@ -21,6 +24,8 @@ Object.keys(models).forEach(key => {
     }
   });
 
+
+// export { sequelize };
 export default models;
 
 
