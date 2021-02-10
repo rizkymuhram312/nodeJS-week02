@@ -10,7 +10,8 @@ export const sequelize = new Sequelize(
   );
 
 const models = {
-    category : sequelize.import('./category.model')
+    category : sequelize.import('./category.model'),
+    address : sequelize.import('./address.model')
 };
 
 Object.keys(models).forEach(key => {
