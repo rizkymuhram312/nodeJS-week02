@@ -1,5 +1,7 @@
-import category from './category'
+import category from './category';
+import province from './province';
 
 export default {
-    category
-}
+    category,
+    province
+};
