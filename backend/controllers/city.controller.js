@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { sequelize } from '../models/index';
+import { sequelize, Op } from '../models/index';
 
 
 
@@ -9,13 +9,29 @@ const readCityMethod = async (req, res) => {
     return res.send(city); 
 }
 
-//filter pencarian data
+//filter pencarian data dengan primary key
 const findCityMethod = async (req, res) => {
     const city = await req.context.models.city.findByPk(
       req.params.cityId,
     );
     return res.send(city);
 };
+
+
+//*  filter by region_name 
+// sql : select * from region where region_name like 'As%'
+// stelah klausa where tentukan nama field yg akan difilter 
+// pastikan object Op di export dari index.model*/
+const filterCityByName = async (req, res) => {
+   const city = await req.context.models.city.findAll(
+       {
+           where:
+               { city_name: { [Op.like]: req.params.cityName + "%" } }
+
+       }
+   );
+   return res.send(city);
+}
 
 
 //tambah data
@@ -53,12 +69,13 @@ const deleteCityMethod = async (req, res) => {
   };
 
 
-  
+
 // Gunakan export default agar semua function bisa dipakai di file lain.
 export default{
     readCityMethod,
     findCityMethod,
     addCityMethod,
     deleteCityMethod,
-    editCityMethod
+    editCityMethod,
+    filterCityByName
 }
