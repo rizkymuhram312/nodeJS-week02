@@ -6,6 +6,7 @@ import roles from './roles'
 import address from './address.routes'
 import product from './product'
 import users from './users'
+import userRole from './userRole';
 
 export default {
     category, 
@@ -15,5 +16,6 @@ export default {
     roles,
     address,
     product,
-    users
+    users,
+    userRole
 }
