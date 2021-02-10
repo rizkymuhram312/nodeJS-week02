@@ -21,17 +21,13 @@ app.use(async (req, res, next) => {
 });
 
 // Routes
-<<<<<<< HEAD
-app.use('/api/category',routes.category)
 app.use('/api/province',routes.province)
 app.use('/api/productimage',routes.productImage)
 app.use('/api/city',routes.city);
 app.use('/api/roles',routes.roles)
 app.use('/api/address',routes.address)
-=======
 app.use('/api/category',routes.category);
 
->>>>>>> 87eef8ca11a6c3c7e6d3680584cefba1e14d3523
 // Start
 const dropDatabaseSync = false;
 
