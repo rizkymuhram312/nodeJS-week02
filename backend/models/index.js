@@ -14,6 +14,7 @@ const Op = Sequelize.Op;
 const models = {
     category : sequelize.import('./category.model'),
     address : sequelize.import('./address.model'),
+    province : sequelize.import('./province.model'),
     city : sequelize.import('./city.model')
 
 };
