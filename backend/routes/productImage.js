@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/', primCtrl.findProductImage);
 router.post('/', primCtrl.createProductImage);
-router.put('/', primCtrl.createProductImage);
-router.delete('/', primCtrl.createProductImage);
+router.put('/', primCtrl.updateProductImage);
+router.delete('/', primCtrl.deleteProductImage);
 
 export default router;
