@@ -4,7 +4,7 @@ import express from "express";
 
 import models, { sequelize } from './models';
 import routes from './routes';
-
+import router from './routes/category';
 const port = process.env.PORT || 1337
 
 const app = express();
@@ -20,10 +20,9 @@ app.use(async (req, res, next) => {
   next();
 });
 
-console.log("ahmad was here");
-
 // Routes
 app.use('/api/category',routes.category)
+app.use('/api/users',routes.users)
 
 // Start
 const dropDatabaseSync = false;
