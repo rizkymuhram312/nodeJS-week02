@@ -11,11 +11,16 @@ export const sequelize = new Sequelize(
 
 const models = {
     category : sequelize.import('./category.model'),
+<<<<<<< HEAD
     address : sequelize.import('./address.model'),
     province : sequelize.import('./province.model'),
     city : sequelize.import('./city.model'),
     productImage : sequelize.import('./productImage.model'),
     roles : sequelize.import('./roles.model')
+=======
+    product : sequelize.import('./product.model')
+
+>>>>>>> 9b51b010a48ee28a47b2fb390acca688310deef6
 };
 
 Object.keys(models).forEach(key => {

@@ -5,7 +5,7 @@ import city from './city';
 import productImage from './productImage'
 import roles from './roles'
 import address from './address.routes'
-
+import product from './product'
 
 export default {
     category, 
@@ -13,5 +13,6 @@ export default {
     city,
     productImage,
     roles,
-    address
+    address,
+    product
 }
