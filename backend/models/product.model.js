@@ -1,5 +1,5 @@
 const product = (sequelize,DataTypes)=>{
-  return sequelize.define('product', {
+  const Product = sequelize.define('product', {
     prod_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -53,6 +53,11 @@ const product = (sequelize,DataTypes)=>{
       },
     ]
   });
+   //add association to product_images
+   Product.associate = models => {
+     Product.hasMany(models.productImage,{foreignKey : 'prim_prod_id', onDelete : 'CASCADE'})
+     }
+   return Product 
 }
 
 export default product;
