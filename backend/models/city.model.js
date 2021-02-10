@@ -3,7 +3,6 @@
     buat arrow function regions lalu deklarasikan class model. 
     constructo sequalize(modelName, attributes,options)
  */
-
 const city = (sequelize, DataTypes) => {
     return sequelize.define('city', {
         city_id: {
