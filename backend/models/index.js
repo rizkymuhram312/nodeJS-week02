@@ -11,7 +11,8 @@ export const sequelize = new Sequelize(
 
 const models = {
     category : sequelize.import('./category.model'),
-    address : sequelize.import('./address.model')
+    product : sequelize.import('./product.model')
+
 };
 
 Object.keys(models).forEach(key => {
