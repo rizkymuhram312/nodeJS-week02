@@ -22,6 +22,8 @@ app.use(async (req, res, next) => {
 
 // Routes
 app.use('/api/category',routes.category)
+app.use('/api/user_role',routes.userRole)
+  
 
 // Start
 const dropDatabaseSync = false;
