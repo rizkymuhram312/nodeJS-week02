@@ -1,3 +1,4 @@
+import { uuid } from 'uuidv4';
 // put your business logic using method sequalize
 const findProductImage = async (req,res) => {
     if (req.body.prim_id){
@@ -12,9 +13,9 @@ const findProductImage = async (req,res) => {
     }   
 }
 const createProductImage = async (req,res) =>{
-    const { prim_id, prim_file_name, prim_path, prim_prod_id} = req.body;
+    const { prim_file_name, prim_path, prim_prod_id} = req.body;
     const prim = await req.context.models.productImage.create({
-      prim_id : prim_id,
+      prim_id : uuid(),
       prim_file_name : prim_file_name,
       prim_path: prim_path,
       prim_prod_id: prim_prod_id
@@ -37,14 +38,14 @@ const updateProductImage = async (req, res) => {
     }
   );
 
-  return res.send(prim);
+  return res.send(200);
 };
 const deleteProductImage = async (req, res) => {
     const result = await req.context.models.productImage.destroy({
       where: { prim_id : req.body.prim_id },
     });
   
-    return res.send(true);
+    return res.send(200);
   };
 
 
