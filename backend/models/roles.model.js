@@ -1,6 +1,6 @@
 const roles = (sequelize,DataTypes)=>{
 
-    return sequelize.define('roles', {
+    const roles =  sequelize.define('roles', {
         role_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,
@@ -26,5 +26,11 @@ const roles = (sequelize,DataTypes)=>{
           },
         ]
       });
+
+      roles.associate = models => {
+        roles.hasMany(models.userRole, {foreignKey: 'user_id', onDelete: 'CASCADE' });
+      };
+
+      return roles;
 };
 export default roles
