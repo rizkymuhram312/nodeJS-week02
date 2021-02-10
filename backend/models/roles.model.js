@@ -1,30 +1,30 @@
-const category = (sequelize,DataTypes)=>{
-    return sequelize.define('category', {
-        cate_id: {
+const roles = (sequelize,DataTypes)=>{
+
+    return sequelize.define('roles', {
+        role_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true
         },
-        cate_name: {
+        role_name: {
           type: DataTypes.STRING(25),
           allowNull: true
         }
       }, {
         sequelize,
-        tableName: 'category',
+        tableName: 'roles',
         schema: 'public',
         timestamps: false,
         indexes: [
           {
-            name: "category_pkey",
+            name: "roles_pkey",
             unique: true,
             fields: [
-              { name: "cate_id" },
+              { name: "role_id" },
             ]
           },
         ]
       });
-}
-
-export default category;
+};
+export default roles

@@ -1,12 +1,19 @@
 import category from './category';
-//edit by Andi
-import city from './city';
 import province from './province';
-
+import city from './city';
+import productImage from './productImage'
+import roles from './roles'
+import address from './address.routes'
+import product from './product'
+import users from './users'
 
 export default {
     category, 
-    //edit by Andi
+    province,
     city,
-    province
+    productImage,
+    roles,
+    address,
+    product,
+    users
 }
