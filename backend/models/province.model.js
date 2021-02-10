@@ -1,5 +1,3 @@
-import models from ".";
-
 const province = (sequelize, DataTypes) => {
  const province = sequelize.define('province', {
     prov_id: {
