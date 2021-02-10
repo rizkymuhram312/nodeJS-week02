@@ -1,4 +1,4 @@
-import Sequelize from 'sequelize'
+import Sequelize from 'sequelize';
 
 export const sequelize = new Sequelize(
     process.env.DATABASE,
@@ -9,7 +9,11 @@ export const sequelize = new Sequelize(
     },
   );
 
+<<<<<<< HEAD
   const Op = Sequelize.Op;
+=======
+const Op = Sequelize.Op;
+>>>>>>> ab11ebca1d13fb291d91bd7b884412a78afd2f0a
 
 const models = {
     category : sequelize.import('./category.model'),
@@ -30,5 +34,7 @@ Object.keys(models).forEach(key => {
   });
 
 
-// export { sequelize };
+export {Op };
 export default models;
+// // export { sequelize };
+// export default models;

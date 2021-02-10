@@ -1,5 +1,5 @@
 const address = (sequelize,DataTypes)=>{
-    return sequelize.define('address', {
+  const address = sequelize.define('address', {
         addr_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,
@@ -65,6 +65,12 @@ const address = (sequelize,DataTypes)=>{
           },
         ]
       });
-}
+      
+      // table Countries belong to Regions, pastikan relasi fk di set sesuai relasi di table, 
+      address.associate = models => {
+      address.belongsTo(models.city,{foreignKey: 'add_city_id'});
+      };
 
+      return address;
+    };
 export default address
