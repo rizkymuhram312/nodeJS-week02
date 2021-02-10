@@ -34,17 +34,16 @@ const findCityMethod = async (req, res) => {
 // pastikan object Op di export dari index.model*/
 const filterCityByName = async (req, res) => {
    const city = await req.context.models.city.findAll(
-    {
-      include: [{
-          model: req.context.models.address
-      }]
-    },
-
-
        {
            where:
                { city_name: { [Op.like]: req.params.cityName + "%" } }
+       }, 
+       {
+        include: [{
+            model: req.context.models.address
+        }]
        }
+  
        
    );
    return res.send(city);
