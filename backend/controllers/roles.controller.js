@@ -1,6 +1,3 @@
-import { Router } from 'express';
-import { sequelize } from '../models/index';
-
 // put your business logic using method sequalize
 const readRolesMethod = async (req, res) => {
   const roles = await req.context.models.roles.findAll();

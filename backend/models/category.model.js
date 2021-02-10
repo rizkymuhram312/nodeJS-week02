@@ -27,4 +27,4 @@ const category = (sequelize,DataTypes)=>{
       });
 }
 
-export default category
+export default category;

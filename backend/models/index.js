@@ -11,8 +11,14 @@ export const sequelize = new Sequelize(
 
 const models = {
     category : sequelize.import('./category.model'),
-    address : sequelize.import('./address.model'),
-    roles : sequelize.import('./roles.model')
+    users : sequelize.import('./users.model'),
+    //address : sequelize.import('./address.model'),
+    province : sequelize.import('./province.model'),
+    city : sequelize.import('./city.model'),
+    productImage : sequelize.import('./productImage.model'),
+    roles : sequelize.import('./roles.model'),
+    product : sequelize.import('./product.model'),
+    userRole : sequelize.import('./userRole.model')
 };
 
 Object.keys(models).forEach(key => {
@@ -21,6 +27,6 @@ Object.keys(models).forEach(key => {
     }
   });
 
+
+// export { sequelize };
 export default models;
-
-
