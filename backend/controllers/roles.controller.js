@@ -32,7 +32,7 @@ const addRolesMethod = async (req, res) => {
 const editRolesMethod = async (req, res) => {
   const {role_name} = req.body;
   const roles =  await req.context.models.roles.update({    
-      role_name: role_name,
+      role_name: role_name
    }, {
       where: { role_id: req.params.roleId }
         });
