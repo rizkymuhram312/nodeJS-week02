@@ -25,6 +25,12 @@ const province = (sequelize, DataTypes) => {
       },
     ]
   });
+
+  //tambah
+  province.associate = models => {
+        province.hasMany(models.city, {foreignKey: 'city_prov_id', onDelete: 'CASCADE'}); // city_prov_id berdasrakan foreign key city
+  };
+
   return province;
 };
 

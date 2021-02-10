@@ -9,6 +9,8 @@ export const sequelize = new Sequelize(
     },
   );
 
+  const Op = Sequelize.Op;
+
 const models = {
     category : sequelize.import('./category.model'),
     users : sequelize.import('./users.model'),
