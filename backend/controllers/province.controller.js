@@ -3,7 +3,16 @@ import { sequelize } from '../models/province.model';
 
 //view data
 const readProvinceMethod = async (req,res) => {
-    const province = await req.context.models.province.findAll();
+    const province = await req.context.models.province.findAll(
+
+        {
+            //Tambah Include
+            include: [{
+                model: req.context.models.city
+            }]
+        }
+
+    );
     return res.send(province);
 }
 
@@ -38,7 +47,7 @@ const editProvinceMethod = async (req,res) => {
 
 //hapus data
 const deleteProvinceMethod = async (req,res) => {
-    const result = await req.context.models.province.destroy({
+    const province = await req.context.models.province.destroy({
         where: {prov_id: req.params.provId},
     });
     return res.send(true);

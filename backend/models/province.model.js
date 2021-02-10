@@ -1,3 +1,5 @@
+import models from ".";
+
 const province = (sequelize, DataTypes) => {
  const province = sequelize.define('province', {
     prov_id: {
@@ -25,6 +27,12 @@ const province = (sequelize, DataTypes) => {
       },
     ]
   });
+
+  //tambah
+  province.associate = models => {
+        province.hasMany(models.city, {foreignKey: 'city_prov_id', onDelete: 'CASCADE'}); // city_prov_id berdasrakan foreign key city
+  };
+
   return province;
 };
 
