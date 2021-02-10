@@ -20,6 +20,8 @@ app.use(async (req, res, next) => {
   next();
 });
 
+console.log("ahmad was here");
+
 // Routes
 app.use('/api/category',routes.category)
 
