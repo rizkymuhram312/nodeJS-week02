@@ -1,5 +1,13 @@
+import {sequelize} from '../models/index';
+
 const findAllUsers = async (req, res, next) => {
-    const allUsers = await req.context.models.users.findAll();
+    const allUsers = await req.context.models.users.findAll({
+
+        include: [{
+            model: req.context.models.address
+        }]
+    }
+    );
     return res.send(allUsers);
 }
 
@@ -13,7 +21,13 @@ const findAllUsers = async (req, res, next) => {
 // }
 
 const findUser = async (req,res) => {
-    const findUserByUserName = await req.context.models.users.findAll({where:{'user_name':req.params.username}})
+    const findUserByUserName = await req.context.models.users.findAll(
+        {where:{'user_name':req.params.username}},
+        {
+            include: [{
+                model: req.context.models.address
+            }]
+        })
     return res.send(findUserByUserName);
 }
 
