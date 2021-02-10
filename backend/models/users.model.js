@@ -34,9 +34,8 @@ const users = (sequelize,DataTypes)=>{
         ]
       });
       // Users.associate = models => {
-      //   Users.hasMany(models.Address,{primaryKey : 'user_id',onDelete : 'CASSCADE'})
-      // }
-      
+      //   Users.hasMany(models.address,{primaryKey : 'user_id', onDelete : 'CASCADE'})
+      // }     
       return Users;
 }
 

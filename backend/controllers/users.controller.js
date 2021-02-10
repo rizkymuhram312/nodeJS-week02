@@ -3,7 +3,6 @@ const saltRounds = 10;
 
 const findAllUsers = async (req, res, next) => {
     const allUsers = await req.context.models.users.findAll();
-    console.log(bcrypt);
     return res.send(allUsers);
 }
 
@@ -38,10 +37,20 @@ const updateUser = async (req,res) => {
 }
 
 const deleteUser = async (req,res) => {
-    const deleteUser = await req.context.models.users.destroy({
+    await req.context.models.users.destroy({
         where : {'user_name' : req.body.user_name}
     })
     return res.sendStatus(200)
 }
+
+//try use include address
+// const findUserWAddress = async (req,res) => {
+//     await req.context.models.users.findAll({
+//         include:[{
+//             model : req.context.models.address
+//         }]
+//     });
+//     return res.send(findUserWAddress)
+// }
 
 export default {findUser,findAllUsers,createUser,updateUser,deleteUser};
