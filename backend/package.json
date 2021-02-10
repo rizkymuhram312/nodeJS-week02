@@ -8,7 +8,7 @@
     "reverse:db": "sequelize-auto -o ./modelquiz -d quiz -h localhost -u postgres -p 5432 -x agas -e postgres"
   },
   "author": "",
-  "license": "ISC",
+  "license": "ISC", 
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

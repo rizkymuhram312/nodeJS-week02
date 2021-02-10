@@ -22,6 +22,7 @@ app.use(async (req, res, next) => {
 
 // Routes
 app.use('/api/category',routes.category)
+app.use('/api/productimage',routes.productImage)
 
 // Start
 const dropDatabaseSync = false;
