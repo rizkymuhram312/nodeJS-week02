@@ -5,6 +5,7 @@ import productImage from './productImage'
 import roles from './roles'
 import address from './address.routes'
 import product from './product'
+import users from './users'
 
 export default {
     category, 
@@ -13,5 +14,6 @@ export default {
     productImage,
     roles,
     address,
-    product
+    product,
+    users
 }
