@@ -22,7 +22,7 @@ app.use(async (req, res, next) => {
 
 // Routes
 app.use('/api/category',routes.category)
-
+app.use('/api/address',routes.address)
 // Start
 const dropDatabaseSync = false;
 
