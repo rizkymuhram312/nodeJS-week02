@@ -1,16 +1,11 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const findAllUsers = async (req, res, next) => {
     const allUsers = await req.context.models.users.findAll();
+    console.log(bcrypt);
     return res.send(allUsers);
 }
-
-// const createUser = async (req,res) => {
-//   const createUser = await req.context.models.users.create({
-//       'user_name' : req.body.user_name,
-//       'user_password' : req.body.user_pass,
-//       'user_addr_id' : req.body.user_add_id
-//   })
-//   return createUser;
-// }
 
 const findUser = async (req,res) => {
     const findUserByUserName = await req.context.models.users.findAll({where:{'user_name':req.params.username}})
@@ -18,12 +13,16 @@ const findUser = async (req,res) => {
 }
 
 const createUser = async (req,res) => {
-    const createUser = await req.context.models.users.create({
-        'user_name': req.body.user_name,
-        'user_password' : req.body.user_password,
-        'user_email' : req.body.user_email
+    await bcrypt.genSalt(saltRounds,async (err,salt) => {        
+        await bcrypt.hash(req.body.user_name,saltRounds,async (err,hash) => {
+          await req.context.models.users.create({
+            'user_name': req.body.user_name,
+            'user_password' : hash,
+            'user_email' : req.body.user_email
+            })
+            res.sendStatus(200)
+        })
     })
-    return res.send(createUser)
 }
 
 const updateUser = async (req,res) => {
