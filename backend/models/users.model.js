@@ -1,5 +1,5 @@
 const users = (sequelize,DataTypes)=>{
-    const Users = sequelize.define('users', {
+    return sequelize.define('users', {
         user_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,
@@ -33,9 +33,9 @@ const users = (sequelize,DataTypes)=>{
           },
         ]
       });
-      Users.associate = models => {
-        Users.hasMany(models.Address,{primaryKey : 'user_id',onDelete : 'CASSCADE'})
-      }
+      // Users.associate = models => {
+      //   Users.hasMany(models.Address,{primaryKey : 'user_id',onDelete : 'CASSCADE'})
+      // }
 }
 
 export default users

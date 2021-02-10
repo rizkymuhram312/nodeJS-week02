@@ -1,8 +1,3 @@
-import { Router } from 'express';
-import { sequelize } from '../models/index';
-
-
-
 // put your business logic using method sequalize
 const readCityMethod = async (req, res) => {
     const city = await req.context.models.city.findAll();
