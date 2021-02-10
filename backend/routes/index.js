@@ -1,12 +1,12 @@
 import category from './category';
-//edit by Andi
+import province from './province';
 import city from './city';
 import productImage from './productImage'
 
 
 export default {
     category, 
-    //edit by Andi
+    province,
     city,
     productImage
 }
