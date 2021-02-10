@@ -5,14 +5,24 @@ import { sequelize, Op } from '../models/index';
 
 // put your business logic using method sequalize
 const readCityMethod = async (req, res) => {
-    const city = await req.context.models.city.findAll();
+    const city = await req.context.models.city.findAll(
+    {
+      include: [{
+          model: req.context.models.address
+      }]
+    }
+  );
     return res.send(city); 
 }
 
 //filter pencarian data dengan primary key
 const findCityMethod = async (req, res) => {
     const city = await req.context.models.city.findByPk(
-      req.params.cityId,
+      req.params.cityId,{
+        include: [{
+            model: req.context.models.address
+        }]
+      }
     );
     return res.send(city);
 };
@@ -24,11 +34,18 @@ const findCityMethod = async (req, res) => {
 // pastikan object Op di export dari index.model*/
 const filterCityByName = async (req, res) => {
    const city = await req.context.models.city.findAll(
+    {
+      include: [{
+          model: req.context.models.address
+      }]
+    },
+
+
        {
            where:
                { city_name: { [Op.like]: req.params.cityName + "%" } }
-
        }
+       
    );
    return res.send(city);
 }

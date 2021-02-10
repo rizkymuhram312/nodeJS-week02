@@ -19,7 +19,8 @@ const models = {
     city : sequelize.import('./city.model'),
     productImage : sequelize.import('./productImage.model'),
     roles : sequelize.import('./roles.model'),
-    product : sequelize.import('./product.model')
+    product : sequelize.import('./product.model'),
+    userRole : sequelize.import('./userRole.model')
 };
 
 Object.keys(models).forEach(key => {

@@ -1,5 +1,5 @@
 const users = (sequelize,DataTypes)=>{
-    const Users = sequelize.define('users', {
+    return sequelize.define('users', {
         user_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,

@@ -25,6 +25,11 @@ const province = (sequelize, DataTypes) => {
       },
     ]
   });
+  // // table Countries belong to Regions, pastikan relasi fk di set sesuai relasi di table, 
+  // province.associate = models => {
+  // province.belongsTo(models.province,{foreignKey: 'prov_id'});
+  // };
+
   return province;
 };
 

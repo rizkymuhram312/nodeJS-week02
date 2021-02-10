@@ -1,4 +1,3 @@
-
 import {Router} from 'express';
 import cateCtrl from '../controllers/category.controller'
 

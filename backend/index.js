@@ -1,10 +1,8 @@
 import 'dotenv/config'
 import cors from "cors";
 import express from "express";
-
 import models, { sequelize } from './models';
 import routes from './routes';
-const port = process.env.PORT || 1338
 
 const app = express();
 app.use(cors());
@@ -28,6 +26,9 @@ app.use('/api/roles',routes.roles)
 app.use('/api/address',routes.address)
 app.use('/api/category',routes.category);
 app.use('/api/product',routes.product)
+app.use('/api/user_role',routes.userRole)
+  
+
 // Start
 const dropDatabaseSync = false;
 

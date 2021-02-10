@@ -26,20 +26,20 @@ function initModels(sequelize) {
   var user_roles = _user_roles(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
 
-  address.belongsTo(users, { as: "add_city", foreignKey: "add_city_id"});
-  users.hasMany(address, { as: "addresses", foreignKey: "add_city_id"});
-  address.belongsTo(city, { as: "add_user", foreignKey: "add_user_id"});
-  city.hasMany(address, { as: "addresses", foreignKey: "add_user_id"});
-  cart.belongsTo(users, { as: "cart_user", foreignKey: "cart_user_id"});
-  users.hasMany(cart, { as: "carts", foreignKey: "cart_user_id"});
-  city.belongsTo(province, { as: "city_prov", foreignKey: "city_prov_id"});
-  province.hasMany(city, { as: "cities", foreignKey: "city_prov_id"});
-  order_detail.belongsTo(orders, { as: "ordi_order_name_order", foreignKey: "ordi_order_name"});
-  orders.hasMany(order_detail, { as: "order_details", foreignKey: "ordi_order_name"});
-  orders.belongsTo(users, { as: "order_user", foreignKey: "order_user_id"});
-  users.hasMany(orders, { as: "orders", foreignKey: "order_user_id"});
   product.belongsTo(category, { as: "prod_cate", foreignKey: "prod_cate_id"});
   category.hasMany(product, { as: "products", foreignKey: "prod_cate_id"});
+  address.belongsTo(city, { as: "add_user", foreignKey: "add_user_id"});
+  city.hasMany(address, { as: "addresses", foreignKey: "add_user_id"});
+  order_detail.belongsTo(orders, { as: "ordi_order_name_order", foreignKey: "ordi_order_name"});
+  orders.hasMany(order_detail, { as: "order_details", foreignKey: "ordi_order_name"});
+  city.belongsTo(province, { as: "city_prov", foreignKey: "city_prov_id"});
+  province.hasMany(city, { as: "cities", foreignKey: "city_prov_id"});
+  address.belongsTo(users, { as: "add_city", foreignKey: "add_city_id"});
+  users.hasMany(address, { as: "addresses", foreignKey: "add_city_id"});
+  cart.belongsTo(users, { as: "cart_user", foreignKey: "cart_user_id"});
+  users.hasMany(cart, { as: "carts", foreignKey: "cart_user_id"});
+  orders.belongsTo(users, { as: "order_user", foreignKey: "order_user_id"});
+  users.hasMany(orders, { as: "orders", foreignKey: "order_user_id"});
   user_roles.belongsTo(users, { as: "user", foreignKey: "user_id"});
   users.hasMany(user_roles, { as: "user_roles", foreignKey: "user_id"});
 
