@@ -67,6 +67,16 @@ const deleteProductMethod = async (req, res) => {
   return res.send(true);
 };
 
+//show product with images
+const findProductWImage = async (req,res) => {
+  const productWImage = await req.context.models.product.findAll({
+    include:[{
+      model : req.context.models.productImage
+    }]
+  })
+  return res.send(productWImage)
+}
+
 // Gunakan export default agar semua function bisa dipakai di file lain.
 export default {
   findProductMethod,
@@ -74,4 +84,5 @@ export default {
   addProductMethod,
   editProductMethod,
   deleteProductMethod,
+  findProductWImage,
 };

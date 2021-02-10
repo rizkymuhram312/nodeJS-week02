@@ -1,5 +1,5 @@
 const productImage = (sequelize,DataTypes) =>{
-    return sequelize.define(
+    const ProductImage =  sequelize.define(
       "product_images",
       {
         prim_id: {
@@ -34,6 +34,11 @@ const productImage = (sequelize,DataTypes) =>{
         ],
       }
     );
+  //add association to product
+     ProductImage.associate = models => {
+       ProductImage.belongsTo(models.product,{foreignKey : 'prim_prod_id'})
+       }
+     return ProductImage;
 }
 
 export default productImage
