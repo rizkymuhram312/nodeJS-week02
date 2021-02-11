@@ -1,13 +1,25 @@
+import { sequelize, Op } from '../models/index';
+
 // put your business logic using method sequalize
 const readRolesMethod = async (req, res) => {
-  const roles = await req.context.models.roles.findAll();
+  const roles = await req.context.models.roles.findAll(
+    {
+      include: [{
+          model: req.context.models.userRole
+      }]
+  }
+  );
   return res.send(roles); 
 }
 
 //filter pencarian data
 const findRolesMethod = async (req, res) => {
   const roles = await req.context.models.roles.findByPk(
-    req.params.roleId,
+    req.params.roleId,{
+      include: [{
+          model: req.context.models.userRole
+      }]
+  }
   );
   return res.send(roles);
 };
@@ -29,7 +41,7 @@ const addRolesMethod = async (req, res) => {
 const editRolesMethod = async (req, res) => {
   const {role_name} = req.body;
   const roles =  await req.context.models.roles.update({    
-      role_name: role_name,
+      role_name: role_name
    }, {
       where: { role_id: req.params.roleId }
         });
@@ -44,7 +56,16 @@ const deleteRolesMethod = async (req, res) => {
 
   return res.send(true);
 };
+const filterrolesByName = async (req, res) => {
+  const roles = await req.context.models.roles.findAll(
+      {
+          where:
+              { roles_name: { [Op.like]: req.params.roleName + "%" } }
 
+      }
+  );
+  return res.send(roles);
+}
 
 
 // Gunakan export default agar semua function bisa dipakai di file lain.
@@ -53,5 +74,6 @@ export default{
   findRolesMethod,
   addRolesMethod,
   deleteRolesMethod,
-  editRolesMethod
+  editRolesMethod,
+  filterrolesByName
 }
