@@ -1,10 +1,6 @@
-import { Router } from 'express';
-import { sequelize } from '../models/province.model';
-
 //view data
 const readProvinceMethod = async (req,res) => {
     const province = await req.context.models.province.findAll(
-
         {
             //Tambah Include
             include: [{
