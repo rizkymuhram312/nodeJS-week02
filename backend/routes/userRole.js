@@ -9,6 +9,8 @@ const router = Router();
 
 
 router.get('/', userRoleCtrl.findUserRole);
+router.post('/', userRoleCtrl.addUserRole);
+router.put('/', userRoleCtrl.editUserRole);
 router.get('/:userId', userRoleCtrl.findIdUserRole);
 router.delete('/:userId', userRoleCtrl.deleteUserRole);
 
