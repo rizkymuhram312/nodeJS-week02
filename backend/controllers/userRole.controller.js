@@ -1,6 +1,12 @@
 
 const findUserRole = async (req, res) => {
-    const userRole = await req.context.models.userRole.findAll();
+    const userRole = await req.context.models.userRole.findAll(
+        {
+            include: [{
+                model: req.context.models.users
+            }]
+        }
+    );
     return res.send(userRole); 
 }
 
@@ -14,7 +20,11 @@ const deleteUserRole = async (req,res) => {
 //filter data with parameter
 const findIdUserRole = async (req,res) => {
     const userRole = await req.context.models.userRole.findByPk(
-        req.params.userId,
+        req.params.userId,{
+            include: [{
+                model: req.context.models.users
+            }]
+        }
     );
     return res.send(userRole);
 };

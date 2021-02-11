@@ -6,7 +6,8 @@ import models from ".";
     constructo sequalize(modelName, attributes,options)
  */
 const city = (sequelize, DataTypes) => {
-    return sequelize.define('city', {
+  const city = sequelize.define('city', {
+
         city_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,
@@ -40,6 +41,12 @@ const city = (sequelize, DataTypes) => {
           },
         ]
       });
+      // table regions hasMany Countries, set foreignkey sesuai relasi di table    
+      city.associate = models => {
+        city.hasMany(models.address, {foreignKey: 'add_city_id', onDelete: 'CASCADE' });
+      };
+
+  return city;
 
       //Tambah assosasi
       city.associate = models => {

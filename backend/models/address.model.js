@@ -1,5 +1,5 @@
 const address = (sequelize,DataTypes)=>{
-    return sequelize.define('address', {
+  const Address = sequelize.define('address', {
         addr_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,
@@ -65,6 +65,13 @@ const address = (sequelize,DataTypes)=>{
           },
         ]
       });
+
+      Address.associate = models => {
+          Address.belongsTo(models.users,{foreignKey : 'add_user_id', onDelete : 'CASCADE'});
+      };
+      return Address;
 }
 
+    //   return address;
+    // };
 export default address

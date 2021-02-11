@@ -1,29 +1,43 @@
+<<<<<<< HEAD
+import {sequelize} from '../models/index';
+=======
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+>>>>>>> 38b0fa60375cadb638b1a04f77a599b14a21835d
+
 const findAllUsers = async (req, res, next) => {
-    const allUsers = await req.context.models.users.findAll();
+    const allUsers = await req.context.models.users.findAll({
+
+        include: [{
+            model: req.context.models.address
+        }]
+    }
+    );
     return res.send(allUsers);
 }
 
-// const createUser = async (req,res) => {
-//   const createUser = await req.context.models.users.create({
-//       'user_name' : req.body.user_name,
-//       'user_password' : req.body.user_pass,
-//       'user_addr_id' : req.body.user_add_id
-//   })
-//   return createUser;
-// }
-
 const findUser = async (req,res) => {
-    const findUserByUserName = await req.context.models.users.findAll({where:{'user_name':req.params.username}})
+    const findUserByUserName = await req.context.models.users.findAll(
+        {where:{'user_name':req.params.username}},
+        {
+            include: [{
+                model: req.context.models.address
+            }]
+        })
     return res.send(findUserByUserName);
 }
 
 const createUser = async (req,res) => {
-    const createUser = await req.context.models.users.create({
-        'user_name': req.body.user_name,
-        'user_password' : req.body.user_password,
-        'user_email' : req.body.user_email
+    await bcrypt.genSalt(saltRounds,async (err,salt) => {        
+        await bcrypt.hash(req.body.user_name,saltRounds,async (err,hash) => {
+          await req.context.models.users.create({
+            'user_name': req.body.user_name,
+            'user_password' : hash,
+            'user_email' : req.body.user_email
+            })
+            res.sendStatus(200)
+        })
     })
-    return res.send(createUser)
 }
 
 const updateUser = async (req,res) => {
@@ -39,10 +53,20 @@ const updateUser = async (req,res) => {
 }
 
 const deleteUser = async (req,res) => {
-    const deleteUser = await req.context.models.users.destroy({
+    await req.context.models.users.destroy({
         where : {'user_name' : req.body.user_name}
     })
     return res.sendStatus(200)
 }
+
+//try use include address
+// const findUserWAddress = async (req,res) => {
+//     await req.context.models.users.findAll({
+//         include:[{
+//             model : req.context.models.address
+//         }]
+//     });
+//     return res.send(findUserWAddress)
+// }
 
 export default {findUser,findAllUsers,createUser,updateUser,deleteUser};

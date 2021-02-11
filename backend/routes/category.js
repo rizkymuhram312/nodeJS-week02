@@ -9,6 +9,4 @@ router.post('/', cateCtrl.addCategoryMethod);
 router.delete('/:categoryId', cateCtrl.deleteCategoryMethod);
 router.put('/:categoryId', cateCtrl.editCategoryMethod);
 
-
-
 export default router;

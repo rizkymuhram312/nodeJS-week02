@@ -19,7 +19,9 @@ const readProvinceMethod = async (req,res) => {
 //filter data with parameter
 const findProvinceMethod = async (req,res) => {
     const province = await req.context.models.province.findByPk(
-        req.params.provId,{
+        req.params.provId,
+        {
+            //Tambah Include
             include: [{
                 model: req.context.models.city
             }]
