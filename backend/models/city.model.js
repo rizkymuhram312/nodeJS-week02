@@ -41,6 +41,7 @@ const city = (sequelize, DataTypes) => {
         ]
       });
 
+      //Tambah assosasi
       city.associate = models => {
         city.belongsTo(models.province,{foreignKey: 'city_prov_id'});
       };
