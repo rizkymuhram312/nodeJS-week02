@@ -28,14 +28,9 @@ Object.keys(models).forEach(key => {
       models[key].associate(models);
     }
   });
-<<<<<<< HEAD
 
 
 export {Op };
 export default models;
 // // export { sequelize };
 // export default models;
-=======
-// export { sequelize };
-export default models;
->>>>>>> 38b0fa60375cadb638b1a04f77a599b14a21835d
