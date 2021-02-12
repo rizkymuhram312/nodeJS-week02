@@ -1,19 +1,11 @@
-// 1. import module Router & sequalize
-import { Router } from 'express';
-import cartCtrl from '../controllers/cart.controller'
-import cartAPI from '../controllers/cart.controller'
+import { response, Router } from 'express';
+import cartController from '../controllers/cart.controller'
+import orderDetailController from '../controllers/oderDetail.controller'
 
+const router = Router()
+router.get('/',cartController.findAllCart)
+router.get('/all',cartController.findAllCartWOrdi)
+router.post('/',cartController.cartCheck,orderDetailController.addProductToOrderDetail);
+//router.get('/users-address',usersController.findUserWAddress);
 
-//2. create object Router dan simpan di variable router
-const router = Router();
-
-router.get('/', cartCtrl.readCartMethod);
-router.get('/:cartId', cartCtrl.findCartMethod);
-router.post('/', cartCtrl.addCartMethod);
-router.put('/:cartId', cartCtrl.editCartMethod);
-router.post('/', cartAPI.createCartItems);
-
-
-export default router;
-
-
+export default(router)

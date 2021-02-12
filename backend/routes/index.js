@@ -9,6 +9,8 @@ import users from './users'
 import userRole from './userRole';
 import cart from './cart';
 import orderDetail from './orderDetail';
+import orders from './orders';
+
 
 
 
@@ -23,5 +25,6 @@ export default {
     users,
     userRole,
     cart,
-    orderDetail
+    orderDetail,
+    orders
 }

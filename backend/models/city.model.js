@@ -1,5 +1,3 @@
-import models from ".";
-
 /*  Jika database already exist, gunakan module sequalize-auto
     untuk generate schema database secara reverse-engineering,
     buat arrow function regions lalu deklarasikan class model. 
@@ -44,14 +42,14 @@ const city = (sequelize, DataTypes) => {
       // table regions hasMany Countries, set foreignkey sesuai relasi di table    
       city.associate = models => {
         city.hasMany(models.address, {foreignKey: 'add_city_id', onDelete: 'CASCADE' });
+        city.belongsTo(models.province,{foreignKey: 'city_prov_id'});
       };
 
   return city;
 
-      city.associate = models => {
-        city.belongsTo(models.province,{foreignKey: 'city_prov_id'});
-      };
-      return city;
+      // city.associate = models => {
+      // };
+      // return city;
 
 };
 

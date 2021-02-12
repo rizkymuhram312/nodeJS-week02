@@ -23,8 +23,8 @@ const models = {
     product : sequelize.import('./product.model'),
     userRole : sequelize.import('./userRole.model'),
     cart : sequelize.import('./cart.model'),
-    orderDetail : sequelize.import('./orderDetail.model')
-
+    orderDetail : sequelize.import('./orderDetail.model'),
+    orders : sequelize.import('./orders.model')
 
 };
 
