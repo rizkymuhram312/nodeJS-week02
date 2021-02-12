@@ -30,5 +30,9 @@ Object.keys(models).forEach(key => {
       models[key].associate(models);
     }
   });
-// export { sequelize };
+
+
+export {Op };
 export default models;
+// // export { sequelize };
+// export default models;

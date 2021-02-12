@@ -1,3 +1,4 @@
+import {sequelize} from '../models/index';
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 

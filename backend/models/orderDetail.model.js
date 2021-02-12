@@ -1,5 +1,5 @@
-const orderDetail = (sequelize,DataTypes) =>{
-    const orderDetail = sequelize.define('order_detail', {
+const orderDetail = (sequelize, DataTypes)=>{
+    const OrderDetail = sequelize.define('order_detail', {
         ordi_quantity: {
           type: DataTypes.INTEGER,
           allowNull: true
@@ -30,16 +30,10 @@ const orderDetail = (sequelize,DataTypes) =>{
         schema: 'public',
         timestamps: false
       });
-      orderDetail.removeAttribute('id');
-
-      orderDetail.associate = models => {
-        orderDetail.belongsTo(models.cart,{foreignKey: 'ordi_cart_id'});
-      };
-
-
-      return orderDetail;
-
-
-};
-
+      OrderDetail.removeAttribute('id');
+      OrderDetail.associate = models => {
+        OrderDetail.belongsTo(models.cart,{foreignKey : 'ordi_cart_id'})
+      }
+      return OrderDetail;
+    }
 export default orderDetail;

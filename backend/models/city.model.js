@@ -1,5 +1,3 @@
-import models from ".";
-
 /*  Jika database already exist, gunakan module sequalize-auto
     untuk generate schema database secara reverse-engineering,
     buat arrow function regions lalu deklarasikan class model. 
