@@ -25,8 +25,10 @@ app.use('/api/city',routes.city);
 app.use('/api/roles',routes.roles)
 app.use('/api/address',routes.address)
 app.use('/api/category',routes.category);
-app.use('/api/product',routes.product)
-app.use('/api/user_role',routes.userRole)
+app.use('/api/product',routes.product);
+app.use('/api/user_role',routes.userRole);
+app.use('/api/cart',routes.cart);
+app.use('/api/orderDetail',routes.orderDetail);
   
 
 // Start

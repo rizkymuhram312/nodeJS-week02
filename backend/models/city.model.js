@@ -46,7 +46,7 @@ const city = (sequelize, DataTypes) => {
         city.hasMany(models.address, {foreignKey: 'add_city_id', onDelete: 'CASCADE' });
       };
 
-  return city;
+ 
 
       //Tambah assosasi
       city.associate = models => {

@@ -33,15 +33,9 @@ const users = (sequelize,DataTypes)=>{
           },
         ]
       });
-<<<<<<< HEAD
-      Users.associate = models => {
-        Users.hasOne(models.address,{foreignKey : 'add_user_id',onDelete : 'CASCADE'});
-      };
-=======
       // Users.associate = models => {
       //   Users.hasMany(models.address,{primaryKey : 'user_id', onDelete : 'CASCADE'})
       // }     
->>>>>>> 38b0fa60375cadb638b1a04f77a599b14a21835d
       return Users;
 }
 
