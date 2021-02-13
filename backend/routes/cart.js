@@ -1,15 +1,16 @@
-// 1. import module Router
-import { Router } from 'express';
+import { response, Router } from 'express';
 import cartController from '../controllers/cart.controller'
+import orderDetailController from '../controllers/oderDetail.controller'
+import apiCart from "../controllers/apiCartOrder";
 
 
-//2. create object Router dan simpan di variable router
-const router = Router();
+const router = Router()
+router.get('/',cartController.findAllCart)
+router.get('/all',cartController.findAllCartWOrdi)
+router.post('/',cartController.cartCheck,orderDetailController.addProductToOrderDetail);
 
-// router.get('/', cartController.findCart);
-// router.post('/', cartController.createCart);
-// router.put('/', primCtrl.updateProductImage);
-// router.delete('/', primCtrl.deleteProductImage);
-router.post('/addCart', cartController.createCartItem);
+router.post('/addCart',apiCart.createCartItems,cartController.findAllCart);
 
-export default router;
+//router.get('/users-address',usersController.findUserWAddress);
+
+export default(router)

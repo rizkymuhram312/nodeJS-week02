@@ -20,7 +20,8 @@ const models = {
     productImage : sequelize.import('./productImage.model'),
     roles : sequelize.import('./roles.model'),
     product : sequelize.import('./product.model'),
-    userRole : sequelize.import('./userRole.model')
+    userRole : sequelize.import('./userRole.model'),
+    cart : sequelize.import('./cart.model')
 };
 
 Object.keys(models).forEach(key => {
@@ -28,14 +29,9 @@ Object.keys(models).forEach(key => {
       models[key].associate(models);
     }
   });
-<<<<<<< HEAD
 
 
 export {Op };
 export default models;
 // // export { sequelize };
 // export default models;
-=======
-// export { sequelize };
-export default models;
->>>>>>> 38b0fa60375cadb638b1a04f77a599b14a21835d

@@ -1,87 +1,38 @@
-
-// // put your business logic using method sequalize
-// const findCart = async (req,res) => {
-//     if (req.body.cart_id){
-//         const cartId = await req.context.models.cart.findByPk(
-//             req.body.cart_id,
-//           );
-//         return res.send(cartId);
-//     }
-//     else {
-//         const cartId = await req.context.models.cart.findAll();
-//         return res.send(cartId);
-//     }   
-// }
-// const createCart = async (req,res) =>{
-//     const { cart_created_on, cart_is_closed, cart_total, cart_user_id} = req.body;
-//     const cart = await req.context.models.cart.create({
-//         cart_created_on : cart_created_on,
-//         cart_is_closed : cart_is_closed,
-//         cart_total : cart_total,
-//         cart_user_id : cart_user_id
-//     });
-//     return res.send(cart);
-// }
-
-
-
-// const updateCart = async (req, res) => {
-//   const { cart_created_on, cart_is_closed, cart_total, cart_user_id } = req.body;
-//   const prim = await req.context.models.productImage.update(
-//     {
-//         cart_created_on : cart_created_on,
-//         cart_is_closed : cart_is_closed,
-//         cart_total : cart_total,
-//         cart_user_id : cart_user_id
-//     },
-//     {
-//       where: {
-//         cart_id: cart_id
-//       }
-//     }
-//   );
-//   return res.send(200);
-// };
-// const deleteProductImage = async (req, res) => {
-//     const result = await req.context.models.productImage.destroy({
-//       where: { prim_id : req.body.prim_id },
-//     });
-  
-//     return res.send(200);
-//   };
-
-const createCartItem = async(req,res,next) =>{
-    const {cart_id,cart_user_id,cart_is_closed,Items} = req.body;
-    let cartId = null;
-    if (cart_id ===null || cart_id === undefined) {
-        cartId = await req.context.models.cart.create({
-            cart_total : null,
-            cart_created_on : Date.now(),
-            cart_is_closed : cart_is_closed,
-            cart_user_id : cart_user_id
+const cartCheck = async (req,res,next) => {
+    let newCart=null;
+    const anyCart = req.body.cart_id
+    if(anyCart !== null){
+        next()
+    }else{
+    newCart = await req.context.models.cart.create({
+            'cart_total':null,
+            'cart_created_on':Date.now(),
+            'cart_is_closed':false,
+            'cart_user_id':12
         });
-    }
 
-    if (cartId.cart_id !== null) {
-        Items.map(async (el)=>{
-            await req.context.models.orderDetail.create({
-                ordi_prod_id : el.prod_id,
-                ordiquantity : el.qty,
-                ordi_price : el.price,
-                ordi_cart_id : cartId.cartId,
-                ordi_order_name : "ORD-22082016-5"
-            })
-        });
+    //ini masih salah 
+    req.body.cart_id = newCart
+    next()
     }
-
-    return null;
 }
 
-// Gunakan export default agar semua function bisa dipakai di file lain.
-export default{
-    // findCart,
-    // createCart,
-    // updateCart
-    // deleteProductImage
-    createCartItem
+const findAllCart = async (req,res,next) => {
+    const allCart = await req.context.models.cart.findAll();
+    return res.send(allCart)
 }
+const findAllCartWOrdi = async (req,res,next) => {
+    const allCart = await req.context.models.cart.findAll({
+        include :[{
+            model : req.context.models.orderDetail
+        }]
+    });
+    return res.send(allCart)
+}
+
+// const addProduct = async (req,res,next)=>{
+//     console.log(req.body.items);
+//     res.send("works")
+// }
+
+export default {cartCheck,findAllCart,findAllCartWOrdi};
