@@ -11,4 +11,6 @@ router.get('/find/:username',userController.findUser);
 router.post('/orders',apiUserOrder.createUserOrder)
 //router.get('/users-address',usersController.findUserWAddress);
 
+router.post('/addUsers',userController.createUsersAddress,userController.findAllUsers);
+
 export default(router)

@@ -41,7 +41,8 @@ const orders = (sequelize,DataTypes)=>{
         ]
         });
             orders.associate = models => {
-            orders.belongsTo(models.users,{foreignKey : 'order_user_id'})
+                orders.hasMany(models.orderDetail, {foreignKey: 'ordi_order_name', onDelete: 'CASCADE' });
+                orders.belongsTo(models.users,{foreignKey : 'order_user_id'})
              }
             return orders;
 }

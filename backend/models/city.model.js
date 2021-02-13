@@ -48,7 +48,10 @@ const city = (sequelize, DataTypes) => {
   return city;
 
       // city.associate = models => {
+<<<<<<< HEAD
+=======
       //   city.belongsTo(models.province,{foreignKey: 'city_prov_id'});
+>>>>>>> 62323c3fec689c10d926e3bae4554699c6d05119
       // };
       // return city;
 
