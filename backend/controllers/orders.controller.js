@@ -34,7 +34,7 @@ const addOrders = async (req, res) => {
     const {order_name, order_created_on, order_is_closed, order_total, order_user_id} = req.body;
     const orders = await req.context.models.orders.create({
       order_name: order_name,
-      order_created_on : order_created_on,
+      order_create_on : order_create_on,
       order_is_closed : order_is_closed,
       order_total : order_total,
       order_user_id : order_user_id

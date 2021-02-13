@@ -29,7 +29,6 @@ app.use('/api/orderDetail',routes.orderDetail),
 app.use('/api/orders',routes.orders)
 
 
-
 // Start
 const dropDatabaseSync = false;
 
