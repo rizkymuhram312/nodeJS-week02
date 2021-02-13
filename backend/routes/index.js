@@ -7,7 +7,12 @@ import address from './address.routes'
 import product from './product'
 import users from './users'
 import userRole from './userRole';
-import cart from './cart'
+import cart from './cart';
+import orderDetail from './orderDetail';
+import orders from './orders';
+
+
+
 
 export default {
     category, 
@@ -19,5 +24,7 @@ export default {
     product,
     users,
     userRole,
-    cart
+    cart,
+    orderDetail,
+    orders
 }

@@ -42,14 +42,13 @@ const city = (sequelize, DataTypes) => {
       // table regions hasMany Countries, set foreignkey sesuai relasi di table    
       city.associate = models => {
         city.hasMany(models.address, {foreignKey: 'add_city_id', onDelete: 'CASCADE' });
+        city.belongsTo(models.province,{foreignKey: 'city_prov_id'});
       };
 
  
 
-      //Tambah assosasi
-      city.associate = models => {
-        city.belongsTo(models.province,{foreignKey: 'city_prov_id'});
-      };
+      // city.associate = models => {
+      // };
       return city;
 
 };

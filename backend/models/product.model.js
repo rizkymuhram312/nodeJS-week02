@@ -55,7 +55,8 @@ const product = (sequelize,DataTypes)=>{
   });
    //add association to product_images
    Product.associate = models => {
-     Product.hasMany(models.productImage,{foreignKey : 'prim_prod_id', onDelete : 'CASCADE'})
+     Product.hasMany(models.productImage,{foreignKey : 'prim_prod_id', onDelete : 'CASCADE'});
+     Product.belongsTo(models.category,{foreignKey: 'prod_cate_id'});
      }
    return Product 
 }

@@ -1,5 +1,5 @@
 const category = (sequelize,DataTypes)=>{
-    return sequelize.define('category', {
+    const category =  sequelize.define('category', {
         cate_id: {
           autoIncrement: true,
           type: DataTypes.INTEGER,
@@ -25,6 +25,11 @@ const category = (sequelize,DataTypes)=>{
           },
         ]
       });
+      category.associate = models => {
+        category.hasMany(models.product,{foreignKey : 'prod_cate_id'})
+      }
+
+      return category;
 }
 
 export default category;

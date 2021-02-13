@@ -2,7 +2,13 @@ import { Router } from 'express';
 import { sequelize } from '../models/index';
 
 const readCategoryMethod = async (req, res) => {
-    const category = await req.context.models.category.findAll();
+    const category = await req.context.models.category.findAll(
+        {
+            include: [{
+                model: req.context.models.product
+            }]
+          }
+    );
     return res.send(category);
 }
 

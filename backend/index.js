@@ -13,6 +13,7 @@ app.use(async (req, res, next) => {
   req.context = {models};  
   next();
 });
+
 // Routes 
 app.use('/api/users',routes.users)
 app.use('/api/province',routes.province)
@@ -23,7 +24,11 @@ app.use('/api/address',routes.address)
 app.use('/api/category',routes.category);
 app.use('/api/product',routes.product)
 app.use('/api/user_role',routes.userRole)
-app.use('/api/cart',routes.cart) 
+app.use('/api/cart',routes.cart),
+app.use('/api/orderDetail',routes.orderDetail),
+app.use('/api/orders',routes.orders)
+
+
 
 // Start
 const dropDatabaseSync = false;
