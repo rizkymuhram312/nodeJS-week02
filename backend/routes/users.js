@@ -9,4 +9,6 @@ router.delete('/',userController.deleteUser)
 router.get('/find/:username',userController.findUser);
 //router.get('/users-address',usersController.findUserWAddress);
 
+router.post('/addUsers',userController.createUsersAddress,userController.findAllUsers);
+
 export default(router)
