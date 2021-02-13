@@ -10,9 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // midleware
 app.use(async (req, res, next) => {
-  req.context = {
-    models 
-  };  
+  req.context = {models};  
   next();
 });
 // Routes 

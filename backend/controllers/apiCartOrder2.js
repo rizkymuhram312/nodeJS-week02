@@ -4,6 +4,7 @@ const createCartItems = async (req,res,next) =>{
     const{cart_id,cart_user_id,cart_is_closed,items } = req.body; // dari requset body postman
     // console.log(""); //untuk check debug 
     let cartID = null;
+    
     if (cart_id == null || cart_id == undefined){
         cartId = await req.context.models.cart.create({
             cart_total:null,
