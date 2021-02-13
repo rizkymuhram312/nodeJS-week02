@@ -27,7 +27,7 @@ app.use('/api/category',routes.category);
 app.use('/api/product',routes.product)
 app.use('/api/user_role',routes.userRole)
 app.use('/api/cart',routes.cart),
-app.use('/api/order_detail',routes.cart),
+app.use('/api/order_detail',routes.orderDetail),
 app.use('/api/orders',routes.orders)
 
 

@@ -6,27 +6,14 @@ import { sequelize, Op } from '../models/index';
 // put your business logic using method sequalize
 const readOrders = async (req, res) => {
     const orders = await req.context.models.orders.findAll(
-    // {
-    //   include: [{
-    //       model: req.context.models.address
-    //   }]
-    // }
+        {
+            include: [{
+                model: req.context.models.orderDetail
+            }]
+          }
   );
     return res.send(orders); 
 }
-
-//filter pencarian data dengan primary key
-const findOrders = async (req, res) => {
-    const orders = await req.context.models.orders.findByPk(
-      req.params.ordersId
-    //   ,{
-    //     include: [{
-    //         model: req.context.models.address
-    //     }]
-    //   }
-    );
-    return res.send(orders);
-};
 
 
 //tambah data
