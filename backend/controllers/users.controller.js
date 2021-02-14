@@ -2,7 +2,7 @@ import {sequelize} from '../models/index';
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-const findAllUsers = async (req, res, next) => {
+const findAllUsers = async (req, res) => {
     const allUsers = await req.context.models.users.findAll({
 
         include: [{
@@ -26,7 +26,7 @@ const findUser = async (req,res) => {
 
 const createUser = async (req,res) => {
     await bcrypt.genSalt(saltRounds,async (err,salt) => {        
-        await bcrypt.hash(req.body.user_name,saltRounds,async (err,hash) => {
+        await bcrypt.hash(req.body.user_password,saltRounds,async (err,hash) => {
           await req.context.models.users.create({
             'user_name': req.body.user_name,
             'user_password' : hash,

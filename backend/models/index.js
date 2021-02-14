@@ -1,5 +1,4 @@
 import Sequelize from 'sequelize';
-import order_detail from '../models_schema/order_detail';
 
 export const sequelize = new Sequelize(
     process.env.DATABASE,
@@ -22,14 +21,10 @@ const models = {
     roles : sequelize.import('./roles.model'),
     product : sequelize.import('./product.model'),
     userRole : sequelize.import('./userRole.model'),
-<<<<<<< HEAD
     cart : sequelize.import('./cart.model'),
     orderDetail : sequelize.import('./orderDetail.model'),
     orders : sequelize.import('./orders.model')
 
-=======
-    cart : sequelize.import('./cart.model')
->>>>>>> 62323c3fec689c10d926e3bae4554699c6d05119
 };
 
 Object.keys(models).forEach(key => {

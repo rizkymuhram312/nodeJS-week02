@@ -23,7 +23,7 @@ const findAddress = async (req, res) => {
 
 //Insert Address
 const addAddress = async (req,res) => {
-const { addr_id, addr_email, addr_fullname, addr_phone_number, addr_is_default, addr_zipcode, addr_street1, addr_street2, add_city_id, add_user_id} = req.body;
+const { addr_id, addr_email, addr_fullname, addr_phone_number, addr_is_default, addr_zipcode, addr_street1, addr_street2, add_city_id_fkey, add_user_id_fkey} = req.body;
   const address = await req.context.models.address.create({
     addr_id : addr_id,
     addr_email : addr_email,
@@ -33,9 +33,10 @@ const { addr_id, addr_email, addr_fullname, addr_phone_number, addr_is_default, 
     addr_zipcode : addr_zipcode,
     addr_street1 : addr_street1,
     addr_street2 : addr_street2,
-    add_city_id : add_city_id,
-    add_user_id : add_user_id
-
+    // add_user_id_fkey : add_user_id_fkey,
+    // add_city_id_fkey : add_city_id_fkey,
+    add_user_id : 41,
+    add_city_id : add_city_id_fkey
   });
 
   return res.send(address);
