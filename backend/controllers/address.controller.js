@@ -4,12 +4,8 @@ import { sequelize } from '../models/index';
 //select Address
 const allAddress = async (req, res) => {
     const address = await req.context.models.address.findAll(
-      {
-      include: [{
-          model: req.context.models.city
-      }]
-    }
-  );
+      
+  )
     return res.send(address);
 }
 
@@ -23,9 +19,9 @@ const findAddress = async (req, res) => {
 
 //Insert Address
 const addAddress = async (req,res) => {
-const { addr_id, addr_email, addr_fullname, addr_phone_number, addr_is_default, addr_zipcode, addr_street1, addr_street2, add_city_id, add_user_id} = req.body;
+const {addr_email, addr_fullname, addr_phone_number, addr_is_default, addr_zipcode, addr_street1, addr_street2, add_city_id, add_user_id} = req.body;
   const address = await req.context.models.address.create({
-    addr_id : addr_id,
+    
     addr_email : addr_email,
     addr_fullname : addr_fullname,
     addr_phone_number : addr_phone_number,
