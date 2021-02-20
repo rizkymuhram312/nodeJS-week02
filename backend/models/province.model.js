@@ -31,7 +31,9 @@ const province = (sequelize, DataTypes) => {
         province.hasMany(models.city, {foreignKey: 'city_prov_id', onDelete: 'CASCADE'}); // city_prov_id berdasrakan foreign key city
   };
   // // table Countries belong to Regions, pastikan relasi fk di set sesuai relasi di table, 
- 
+  // province.associate = models => {
+  // province.belongsTo(models.province,{foreignKey: 'prov_id'});
+  // };
 
   return province;
 };

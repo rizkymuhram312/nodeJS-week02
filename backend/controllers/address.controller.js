@@ -29,9 +29,8 @@ const {addr_email, addr_fullname, addr_phone_number, addr_is_default, addr_zipco
     addr_zipcode : addr_zipcode,
     addr_street1 : addr_street1,
     addr_street2 : addr_street2,
-    add_city_id : add_city_id,
-    add_user_id : add_user_id
-
+    add_user_id : add_user_id,
+    add_city_id : add_city_id
   });
 
   return res.send(address);

@@ -34,7 +34,7 @@ const address = (sequelize,DataTypes)=>{
           type: DataTypes.STRING(255),
           allowNull: true
         },
-        add_city_id: {
+        add_user_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
           references: {
@@ -42,7 +42,7 @@ const address = (sequelize,DataTypes)=>{
             key: 'user_id'
           }
         },
-        add_user_id: {
+        add_city_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
           references: {
@@ -67,10 +67,14 @@ const address = (sequelize,DataTypes)=>{
       });
 
       Address.associate = models => {
-          Address.belongsTo(models.users,{foreignKey : 'add_user_id', onDelete : 'CASCADE'});
+          Address.belongsTo(models.users,{onDelete : 'CASCADE'});
+          Address.belongsTo(models.city,{foreignKey :'add_city_id', onDelete :'CASCADE'});
       };
+
+      // Address.associate = models => {
+      // };
       return Address;
-}
+  }
 
     //   return address;
     // };

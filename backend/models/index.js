@@ -1,5 +1,4 @@
 import Sequelize from 'sequelize';
-import order_detail from '../models_schema/order_detail';
 
 export const sequelize = new Sequelize(
     process.env.DATABASE,

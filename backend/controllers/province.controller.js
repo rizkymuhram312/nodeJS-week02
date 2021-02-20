@@ -28,8 +28,10 @@ const findProvinceMethod = async (req,res) => {
 
 //Insert data
 const addProvinceMethod = async (req,res) => {
-    const {prov_name} = req.body;
+    const {prov_id,prov_name} = req.body.data; //tambah
+    console.log('wait');    //tambah
     const province = await req.context.models.province.create({
+        prov_id : prov_id,  //tambah
         prov_name: prov_name
     });
     return res.send(province);
@@ -37,14 +39,14 @@ const addProvinceMethod = async (req,res) => {
 
 //Ubah data
 const editProvinceMethod = async (req,res) => {
-    const {prov_name} = req.body;
+    const {prov_name} = req.body.data;      //tambah
     const province = await req.context.models.province.update({
         prov_name: prov_name
     },
-    {
+    {returning:true,        //tambah
         where: {prov_id: req.params.provId}
     });
-    return res.sendStatus(200);
+    return res.send(true); //ubah
 };
 
 //hapus data
